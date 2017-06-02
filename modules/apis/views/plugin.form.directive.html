@@ -2,27 +2,27 @@
 <span ng-repeat="field in currentPlugin.schema">
 	<div class="form-group">
 		<span ng-if="field.type == 'integer'">
-			<label class="control-label" for="{{field.name}}">{{field.label}}</label>
-			<input ng-model="value[field.name]" type="number" class="form-control" />
+			<label class="control-label" for="{{field.name}}">{{field.label}}<span ng-if="field.required">*</span></label>
+			<input ng-model="value[field.name]" ng-required="field.required" type="number" class="form-control" />
 		</span>
 		<span ng-if="field.type == 'enum'">
-			<label class="control-label" for="{{field.name}}">{{field.label}}</label>
-			<select ng-model="value[field.name]" id="field.name" class="form-control" required>
-                <option value = "">Select</option>
-                <option value="{{f.value}}" ng-repeat="f in field.values">
-                	{{f.label}}
-                </option>
-            </select>
+			<label class="control-label" for="{{field.name}}">{{field.label}}<span ng-if="field.required">*</span></label>
+			<select ng-model="value[field.name]" id="field.name" class="form-control" ng-required="field.required">
+						<option value = "">Select</option>
+						<option value="{{f.value}}" ng-repeat="f in field.values">
+							{{f.label}}
+						</option>
+				</select>
 		</span>
 		<span ng-if="field.type == 'string'">
-			<label class="control-label" for="{{field.name}}">{{field.label}}</label>
-			<input data-ng-model="value[field.name]" type="text" class="form-control"  />
+			<label class="control-label" for="{{field.name}}">{{field.label}}<span ng-if="field.required">*</span></label>
+			<input data-ng-model="value[field.name]" ng-required="field.required" type="text" class="form-control"  />
 		</span>
 		<span ng-if="field.type == 'boolean'">
 			<div class="checkbox">
 			  <label>
-			    <input type="checkbox" ng-model="value[field.name]" value="">
-			    {{field.label}}
+			    <input type="checkbox" ng-required="field.required" ng-model="value[field.name]" value="">
+			    {{field.label}}<span ng-if="field.required">*</span>
 			  </label>
 			</div>
 		</span>
@@ -32,5 +32,7 @@
     <input type="submit" value="Add plugin" class="btn btn-default btn-sm">
 </div>
 <div data-ng-show="error" class="text-danger">
-	<strong data-ng-bind="error"></strong>
+		<div ng-repeat="(key, val) in error">
+			{{val}}
+		</div>
 </div>

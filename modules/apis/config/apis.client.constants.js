@@ -43,7 +43,8 @@ angular.module('apis').constant('PLUGINSAVAILABLE', [
 			{
 				'name':'config.host',
 				'type' : 'string',
-				'label': 'Host'
+				'label': 'Host',
+				'required': true
 			},
 			{
 				'name':'config.timeout',
@@ -53,7 +54,13 @@ angular.module('apis').constant('PLUGINSAVAILABLE', [
 			{
 				'name':'config.port',
 				'type' : 'integer',
-				'label': 'Port'
+				'label': 'Port',
+				'required': true
+			},
+			{
+				'name':'consumer_id',
+				'type': 'string',
+				'label': 'Consumer ID',
 			}
 		]
 	},

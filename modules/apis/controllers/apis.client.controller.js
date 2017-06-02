@@ -116,6 +116,7 @@ angular.module('apis').controller('ApisController', ['$scope', '$stateParams', '
 					$state.go($state.current, {}, {reload: true});
 				}, function(errorResponse) {
 					$scope.error = errorResponse.data;
+					console.log($scope.error);
 				});
 			}
 		};
