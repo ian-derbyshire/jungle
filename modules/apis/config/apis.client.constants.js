@@ -354,7 +354,32 @@ angular.module('apis').constant('PLUGINSAVAILABLE', [
 				'name':'config.second',
 				'type' : 'integer',
 				'label': 'Limit (second)'
-			}
+			},
+			{
+				'name':'config.minute',
+				'type' : 'integer',
+				'label': 'Limit (minute)'
+			},
+			{
+				'name':'config.hour',
+				'type' : 'integer',
+				'label': 'Limit (hour)'
+			},
+			{
+				'name':'config.day',
+				'type' : 'integer',
+				'label': 'Limit (day)'
+			},
+			{
+				'name':'config.month',
+				'type' : 'integer',
+				'label': 'Limit (month)'
+			},
+			{
+				'name':'config.year',
+				'type' : 'integer',
+				'label': 'Limit (year)'
+			},
 		]
 	},
 	{
