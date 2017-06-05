@@ -9,8 +9,8 @@ angular.module('apis').controller('ApisController', ['$scope', '$stateParams', '
 			// Create new Api object
 			var api = new Apis ({
 				name: this.name,
-				hosts: this.request_host,
-				request_path: this.request_path,
+				hosts: this.hosts,
+				uris: this.uris,
 				strip_request_path: this.strip_request_path,
 				preserve_host: this.preserve_host,
 				upstream_url : this.upstream_url
@@ -22,7 +22,7 @@ angular.module('apis').controller('ApisController', ['$scope', '$stateParams', '
 
 				// Clear form fields
 				$scope.name = '';
-				$scope.request_host = '';
+				$scope.hosts = '';
 				$scope.request_path = '';
 				$scope.strip_request_path = '';
 				$scope.preserve_host = '';
@@ -59,7 +59,6 @@ angular.module('apis').controller('ApisController', ['$scope', '$stateParams', '
 			api.$update(function() {
 				$location.path('apis/' + api.id);
 			}, function(errorResponse) {
-				console.log(errorResponse);
 				$scope.error = errorResponse.data;
 			});
 		};

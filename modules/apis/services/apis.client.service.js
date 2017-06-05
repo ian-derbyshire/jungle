@@ -10,7 +10,7 @@ angular.module('apis').factory('Apis', ['$resource', '$localStorage',
 				isArray: false
 			},
 			update: {
-				method: 'post'
+				method: 'patch'
 			}
 		});
 	}
@@ -26,7 +26,7 @@ angular.module('apis').factory('Plugins', ['$resource', '$localStorage',
 				isArray: false
 			},
 			update: {
-				method: 'post'
+				method: 'patch'
 			}
 		});
 	}

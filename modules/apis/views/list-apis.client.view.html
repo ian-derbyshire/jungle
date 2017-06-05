@@ -4,7 +4,7 @@
       {{error}}
     </div>
     <div class="page-header">
-        <h1>Apis</h1>
+        <h1>APIs</h1>
     </div>
     <div class="form-group">
         <div class="input-group">
@@ -25,12 +25,12 @@
                 <span ng-show="sortType == 'name' && sortReverse" class="fa fa-arrow-up"></span>
             </th>
             <th ng-click="sortType = 'request_host'; sortReverse = !sortReverse" class="sortable">
-                Request Host
+                Hosts
                 <span ng-show="sortType == 'request_host' && !sortReverse" class="fa fa-arrow-down"></span>
                 <span ng-show="sortType == 'request_host' && sortReverse" class="fa fa-arrow-up"></span>
             </th>
             <th ng-click="sortType = 'request_path'; sortReverse = !sortReverse" class="sortable">
-                Request Path
+                Paths
                 <span ng-show="sortType == 'request_path' && !sortReverse" class="fa fa-arrow-down"></span>
                 <span ng-show="sortType == 'request_path' && sortReverse" class="fa fa-arrow-up"></span>
             </th>
@@ -40,7 +40,7 @@
                 <span ng-show="sortType == 'upstream_url' && sortReverse" class="fa fa-arrow-up"></span>
             </th>
             <th ng-click="sortType = 'strip_request_path'; sortReverse = !sortReverse" class="sortable">
-                Strip Request Path
+                Strip Paths
                 <span ng-show="sortType == 'strip_request_path' && !sortReverse" class="fa fa-arrow-down"></span>
                 <span ng-show="sortType == 'strip_request_path' && sortReverse" class="fa fa-arrow-up"></span>
             </th>
@@ -62,13 +62,13 @@
                 </span>
               </td>
               <td>
-                <span editable-text="api.request_host" e-name="request_host" e-form="rowform">
-                  {{api.request_host}}
+                <span editable-text="api.hosts" e-name="hosts" e-form="rowform">
+                  {{api.hosts}}
                 </span>
               </td>
               <td>
-                <span editable-text="api.request_path" e-name="request_path" e-form="rowform">
-                  {{api.request_path}}
+                <span editable-text="api.uris" e-name="uris" e-form="rowform">
+                  {{api.uris}}
                 </span>
               </td>
               <td>
@@ -96,9 +96,9 @@
                   </button>
                 </form>
                 <div class="buttons" ng-show="!rowform.$visible">
-                  <button class="btn btn-primary btn-xs" ng-click="rowform.$show()"><i class="glyphicon glyphicon-edit"></i> Edit API Details </button>
+                  <button class="btn btn-primary btn-xs" ng-click="rowform.$show()"><i class="glyphicon glyphicon-edit"></i> Edit API</button>
                   <a class="btn btn-success btn-xs" href="/#!/apis/view/{{api.id}}">
-                    <i class="glyphicon glyphicon-eye-open"></i> View API Details
+                    <i class="glyphicon glyphicon-eye-open"></i> View API
                   </a>
                 </div>  
               </td>

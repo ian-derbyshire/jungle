@@ -20,24 +20,24 @@
 				<th>Value</th>
 			</tr>
 			<tr>
-				<td>request_host</td>
-				<td>{{api.request_host}}</td>
+				<td>Hosts</td>
+				<td>{{api.hosts}}</td>
 			</tr>
 			<tr>
-				<td>request_path</td>
-				<td>{{api.request_path}}</td>
+				<td>Paths</td>
+				<td>{{api.uris}}</td>
 			</tr>
 			<tr>
-				<td>upstream_url</td>
+				<td>Upstream URL</td>
 				<td>{{api.upstream_url}}</td>
 			</tr>
 			<tr>
-				<td>strip_request_path</td>
-				<td>{{api.strip_request_path}}</td>
+				<td>Strip Paths</td>
+				<td>{{ api.strip_request_path && "ON" || "OFF" }}</td>
 			</tr>
 			<tr>
-				<td>preserve_host</td>
-				<td>{{api.preserve_host}}</td>
+				<td>Preserve Host</td>
+				<td>{{ api.preserve_host && "ON" || "OFF" }}</td>
 			</tr>
 		</table>
 	</p>
