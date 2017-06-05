@@ -9,9 +9,14 @@ angular.module('apis').constant('PLUGINSAVAILABLE', [
 		docUrl: 'http://getkong.org/plugins/http-log/',
 		schema: [
 			{
+				'name':'consumer_id',
+				'type' : 'string',
+				'label': 'Consumer ID'
+			},
+			{
 				'name':'config.http_endpoint',
 				'type' : 'string',
-				'label': 'Http endpoint'
+				'label': 'Http Endpoint'
 			},
 			{
 				'name':'config.timeout',
@@ -41,6 +46,11 @@ angular.module('apis').constant('PLUGINSAVAILABLE', [
 		docUrl: 'http://getkong.org/plugins/udp-log/',
 		schema: [
 			{
+				'name':'consumer_id',
+				'type': 'string',
+				'label': 'Consumer ID',
+			},
+			{
 				'name':'config.host',
 				'type' : 'string',
 				'label': 'Host',
@@ -57,11 +67,6 @@ angular.module('apis').constant('PLUGINSAVAILABLE', [
 				'label': 'Port',
 				'required': true
 			},
-			{
-				'name':'consumer_id',
-				'type': 'string',
-				'label': 'Consumer ID',
-			}
 		]
 	},
 	{
@@ -69,6 +74,11 @@ angular.module('apis').constant('PLUGINSAVAILABLE', [
 		label: 'TCP Log',
 		docUrl: 'http://getkong.org/plugins/tcp-log/',
 		schema: [
+			{
+				'name':'consumer_id',
+				'type': 'string',
+				'label': 'Consumer ID',
+			},
 			{
 				'name':'config.host',
 				'type' : 'string',
@@ -97,9 +107,23 @@ angular.module('apis').constant('PLUGINSAVAILABLE', [
 		docUrl: 'http://getkong.org/plugins/file-log/',
 		schema: [
 			{
+				'name':'consumer_id',
+				'type': 'string',
+				'label': 'Consumer ID',
+			},
+			{
 				'name':'config.path',
 				'type' : 'string',
-				'label': 'The output path file'
+				'label': 'The Output Path File'
+			},
+			{
+				'name': 'reopen',
+				'type' : 'enum',
+				'label': 'Reopen',
+				'values': [
+					{ 'label' : 'True', 'value' : 'true'},
+					{ 'label' : 'False', 'value' : 'false'}
+				]
 			}
 		]
 	},
@@ -112,6 +136,11 @@ angular.module('apis').constant('PLUGINSAVAILABLE', [
 				'name':'config.hide_credentials',
 				'type' : 'boolean',
 				'label': 'Hide Credentials'
+			},
+			{
+				'name':'config.anonymous',
+				'type' : 'string',
+				'label': 'Anonymous'
 			}
 		],
 		api : {
@@ -176,6 +205,16 @@ angular.module('apis').constant('PLUGINSAVAILABLE', [
 				'name':'config.key_names',
 				'type' : 'string',
 				'label': 'Key Names'
+			},
+			{
+				'name':'config.anonymous',
+				'type' : 'string',
+				'label': 'Anonymous'
+			},
+			{
+				'name': 'config.key_in_body',
+				'type' : 'enum',
+				'label': 'Key In Body'
 			}
 		],
 		api :
@@ -255,24 +294,29 @@ angular.module('apis').constant('PLUGINSAVAILABLE', [
 			{
 				'name':'config.max_age',
 				'type' : 'integer',
-				'label': 'Max age'
+				'label': 'Max Age'
+			},
+			{
+				'name': 'config.preflight_continue',
+				'type' : 'enum',
+				'label': 'Preflight Continue'
 			}
 		]
 	},
 	{
-		name: 'ssl',
-		label: 'SSL',
-		docUrl: 'http://getkong.org/plugins/ssl/',
+		name: 'dynamic-ssl',
+		label: 'Dynamic SSL',
+		docUrl: 'https://getkong.org/plugins/dynamic-ssl/',
 		schema: [
 			{
 				'name':'config.cert',
 				'type' : 'string',
-				'label': 'Certificate file path'
+				'label': 'Certificate File Path'
 			},
 			{
 				'name':'config.key',
 				'type' : 'string',
-				'label': 'Certificate key path'
+				'label': 'Certificate Key Path'
 			},
 			{
 				'name':'config.only_https',
@@ -287,34 +331,81 @@ angular.module('apis').constant('PLUGINSAVAILABLE', [
 		docUrl: 'http://getkong.org/plugins/request-transformer/',
 		schema: [
 			{
+				'name':'consumer_id',
+				'type': 'string',
+				'label': 'Consumer ID',
+			},
+				{
+				'name':'config.http_method',
+				'type': 'enum',
+				'label': 'HTTP Method',
+				'values': [
+					{ 'label' : 'GET', 'value' : 'GET'},
+					{ 'label' : 'POST', 'value' : 'POST'},
+					{ 'label' : 'PUT', 'value' : 'PUT'},
+					{ 'label' : 'PATCH', 'value' : 'PATCH'},
+					{ 'label' : 'DELETE', 'value' : 'DELETE'}
+				]
+			},
+			{
 				'name':'config.add.headers',
 				'type' : 'string',
-				'label': 'Headers to add'
+				'label': 'Headers To Add'
 			},
 			{
 				'name':'config.add.querystring',
 				'type' : 'string',
-				'label': 'Parameters to add in request querystring'
+				'label': 'Parameters To Add In Request Querystring'
 			},
 			{
 				'name':'config.add.form',
 				'type' : 'string',
-				'label': 'Values to add in request body'
+				'label': 'Values To Add In Request Body'
+			},
+			{
+				'name':'config.append.headers',
+				'type' : 'string',
+				'label': 'Headers To Append'
+			},
+			{
+				'name':'config.append.querystring',
+				'type' : 'string',
+				'label': 'Parameters To Append In Request Querystring'
+			},
+			{
+				'name':'config.append.form',
+				'type' : 'string',
+				'label': 'Values To Append In Request Body'
 			},
 			{
 				'name':'config.remove.headers',
 				'type' : 'string',
-				'label': 'Headers to remove'
+				'label': 'Headers To Remove'
 			},
 			{
 				'name':'config.remove.querystring',
 				'type' : 'string',
-				'label': 'Parameters to remove in request querystring'
+				'label': 'Parameters To Remove In Request Querystring'
 			},
 			{
 				'name':'config.remove.form',
 				'type' : 'string',
-				'label': 'Values to remove in request body'
+				'label': 'Values To Remove In Request Body'
+			},
+			{
+				'name':'config.replace.headers',
+				'type' : 'string',
+				'label': 'Headers To Replace'
+			},
+			{
+				'name':'config.replace.querystring',
+				'type' : 'string',
+				'label': 'Parameters To Replace In Request Querystring'
+			},
+			{
+				'name':'config.replace.form',
+				'type' : 'string',
+				'label': 'Values To Replace In Request Body'
 			}
 		]
 	},
@@ -324,24 +415,49 @@ angular.module('apis').constant('PLUGINSAVAILABLE', [
 		docUrl: 'http://getkong.org/plugins/response-transformer/',
 		schema: [
 			{
+				'name':'consumer_id',
+				'type' : 'string',
+				'label': 'Consumer ID'
+			},
+			{
 				'name':'config.add.headers',
 				'type' : 'string',
-				'label': 'Headers to add'
+				'label': 'Headers To Add'
 			},
 			{
 				'name':'config.add.json',
 				'type' : 'string',
-				'label': 'Values to add to a JSON response body'
+				'label': 'Values To Add To A JSON Response Body'
+			},
+			{
+				'name':'config.append.headers',
+				'type' : 'string',
+				'label': 'Headers To Append'
+			},
+			{
+				'name':'config.append.json',
+				'type' : 'string',
+				'label': 'Values To Append To A JSON Response Body'
 			},
 			{
 				'name':'config.remove.headers',
 				'type' : 'string',
-				'label': 'Headers to remove'
+				'label': 'Headers To Remove'
 			},
 			{
 				'name':'config.remove.json',
 				'type' : 'string',
-				'label': 'Values to remove to a JSON response body'
+				'label': 'Values To Remove To A JSON Response Body'
+			},
+				{
+				'name':'config.replace.headers',
+				'type' : 'string',
+				'label': 'Headers To Replace'
+			},
+			{
+				'name':'config.replace.json',
+				'type' : 'string',
+				'label': 'Values To Replace To A JSON Response Body'
 			}
 		]
 	},
@@ -350,6 +466,11 @@ angular.module('apis').constant('PLUGINSAVAILABLE', [
 		label: 'Rate Limiting',
 		docUrl: 'http://getkong.org/plugins/rate-limiting/',
 		schema: [
+			{
+				'name':'consumer_id',
+				'type' : 'string',
+				'label': 'Consumer ID'
+			},
 			{
 				'name':'config.second',
 				'type' : 'integer',
@@ -380,6 +501,60 @@ angular.module('apis').constant('PLUGINSAVAILABLE', [
 				'type' : 'integer',
 				'label': 'Limit (year)'
 			},
+			{
+				'name':'config.limit_by',
+				'type' : 'enum',
+				'label': 'Limit By' ,
+				'values': [
+					{ 'label' : 'Consumer', 'value' : 'consumer'},
+					{ 'label' : 'Credential', 'value' : 'credential'},
+					{ 'label' : 'IP Address', 'value' : 'ip'}
+				]
+			},
+			{
+				'name':'config.policy',
+				'type' : 'enum',
+				'label': 'Policy' ,
+				'values': [
+					{ 'label' : 'Local', 'value' : 'local'},
+					{ 'label' : 'Cluster', 'value' : 'cluster'},
+					{ 'label' : 'Redis', 'value' : 'redis'}
+				]
+			},
+			{
+				'name':'config.fault_tolerant',
+				'type' : 'enum',
+				'label': 'Fault Tolerant',
+				'values': [
+					{ 'label' : 'True', 'value' : 'true'},
+					{ 'label' : 'False', 'value' : 'false'}
+				]
+			},
+			{
+				'name':'config.redis_host',
+				'type' : 'string',
+				'label': 'Redis Host'
+			},
+			{
+				'name':'config.redis_port',
+				'type' : 'integer',
+				'label': 'Redis Port'
+			},
+			{
+				'name':'config.redis_password',
+				'type' : 'string',
+				'label': 'Redis Password'
+			},
+			{
+				'name':'config.redis_timeout',
+				'type' : 'integer',
+				'label': 'Timeout'
+			},
+			{
+				'name':'config.redis_database',
+				'type' : 'integer',
+				'label': 'Redis Database'
+			},
 		]
 	},
 	{
@@ -388,9 +563,14 @@ angular.module('apis').constant('PLUGINSAVAILABLE', [
 		docUrl: 'http://getkong.org/plugins/request-size-limiting/',
 		schema: [
 			{
+				'name':'consumer_id',
+				'type' : 'string',
+				'label': 'Consumer ID'
+			},
+			{
 				'name':'config.allowed_payload_size',
 				'type' : 'integer',
-				'label': 'Allowed request payload size in megabytes'
+				'label': 'Allowed Request Payload Size In Megabytes'
 			}
 		]
 	}
