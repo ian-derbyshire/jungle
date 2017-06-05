@@ -34,7 +34,7 @@ angular.module('apis').factory('Plugins', ['$resource', '$localStorage',
 
 angular.module('apis').factory('PluginsConfigurations', ['$resource', 'KONGURL',
 	function($resource, KONGURL) {
-		return $resource(KONGURL+'/plugins_configurations', { pluginId: '@id'
+		return $resource(KONGURL+'/plugins', { pluginId: '@id'
 		}, {
 			query: {
 				method: 'GET',

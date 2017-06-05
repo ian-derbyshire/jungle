@@ -25,9 +25,9 @@
         	</ul>
           <ul class="nav nav-sidebar" data-ng-repeat="item in menu.items | orderBy: 'position'" ng-switch="item.menuItemType" ui-route="{{item.uiRoute}}" class="{{item.menuItemClass}}" ng-class="{active: ($uiRoute)}" dropdown="item.menuItemType === 'dropdown'">
           	<li role="presentation" class="disabled"><a href="#">{{item.title}}</a></li>
-			<li class="ng-class: {active: $uiRoute, disabled: !storage.kongurl}" data-ng-repeat="subitem in item.items | orderBy: 'position'" ui-route="{{subitem.uiRoute}}">
-				<a ng-if="storage.kongurl" href="/#!/{{subitem.link}}" data-ng-bind="subitem.title"></a>
-				<a ng-if="!storage.kongurl" href="#" data-ng-bind="subitem.title"></a>
-			</li>
+						<li class="ng-class: {active: $uiRoute, disabled: !storage.kongurl}" data-ng-repeat="subitem in item.items | orderBy: 'position'" ui-route="{{subitem.uiRoute}}">
+							<a ng-if="storage.kongurl" href="/#!/{{subitem.link}}" data-ng-bind="subitem.title"></a>
+							<a ng-if="!storage.kongurl" href="#" data-ng-bind="subitem.title"></a>
+						</li>
           </ul>
         </div>

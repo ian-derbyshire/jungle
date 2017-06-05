@@ -4,6 +4,12 @@
     </div>
     <div class="col-md-12">
         <form class="form-horizontal" data-ng-submit="update()" novalidate>
+            <div class="text-right">
+                <a class="btn btn-default btn-sm" href="/#!/apis/view/{{api.id}}">
+                    Back
+                </a>
+                <input type="submit" value="Update" class="btn btn-primary btn-sm" />
+            </div>
             <fieldset>
                 <div class="form-group">
                     <label class="control-label" for="name">Name</label>
@@ -46,7 +52,6 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <input type="submit" value="Update" class="btn btn-default btn-sm">
                 </div>
 				<div data-ng-show="error" class="text-danger">
 					<strong data-ng-bind="error"></strong>

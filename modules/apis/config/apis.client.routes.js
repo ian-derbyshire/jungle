@@ -9,7 +9,7 @@ angular.module('apis').config(['$stateProvider',
 			url: '/apis',
 			templateUrl: 'modules/apis/views/list-apis.client.view.html',
 			ncyBreadcrumb: {
-				label: 'List Apis',
+				label: 'List APIs',
 				parent: 'home'
 			},
 			reloadOnSearch: true

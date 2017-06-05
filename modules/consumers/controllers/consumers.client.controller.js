@@ -100,7 +100,6 @@ angular.module('consumers').controller('ConsumersController', ['$scope', '$state
 		$scope.createPlugin = function() {
 			if ($scope.currentPlugin !== null) {
 				var plugin = new Plugins({
-					value: $scope.value,
 					name: $scope.currentPlugin.name,
 					consumer_id: $stateParams.consumerId,
 					api_id: $scope.api_id.id

@@ -4,6 +4,12 @@
     </div>
     <div class="col-md-12">
         <form class="form-horizontal" data-ng-submit="update()" novalidate>
+            <div class="text-right">
+                <a class="btn btn-default btn-sm" href="/#!/consumers">
+                    Back
+                </a>
+                <input type="submit" value="Update" class="btn btn-primary btn-sm" />
+            </div>
             <fieldset>
                 <div class="form-group">
                     <label class="control-label" for="username">Username</label>
@@ -16,9 +22,6 @@
                     <div class="controls">
                         <input type="text" data-ng-model="consumer.custom_id" id="custom_id" class="form-control" placeholder="Custom ID">
                     </div>
-                </div>
-                <div class="form-group">
-                    <input type="submit" value="Update" class="btn btn-default">
                 </div>
 				<div data-ng-show="error" class="text-danger">
 					<strong data-ng-bind="error"></strong>

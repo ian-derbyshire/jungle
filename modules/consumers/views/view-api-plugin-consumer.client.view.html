@@ -22,7 +22,7 @@
 							<a href="/#!/apis/{{plugin.api_id}}">{{api.name}}</a>
 						</td>
 					</tr>
-					<tr ng-repeat="(key, value) in plugin.value">
+					<tr ng-repeat="(key, value) in plugin.config">
 						<td>{{key}}</td>
 						<td>{{value}}</td>
 					</tr>
@@ -31,7 +31,7 @@
         </li>
     </div>
     <div class="alert alert-warning text-center" data-ng-hide="!plugins.$resolved || plugins.data.length">
-    	No active plugins found in the API, why don't you add one ?
+    	No active plugins found in the API, why don't you add one?
     </div>
 </section>
 <section class="col-md-6" data-ng-controller="ConsumersController" data-ng-init="initPluginForm()">

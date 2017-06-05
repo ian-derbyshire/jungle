@@ -57,7 +57,7 @@ angular.module('apis').controller('ApisController', ['$scope', '$stateParams', '
 		$scope.update = function() {
 			var api = $scope.api;
 			api.$update(function() {
-				$location.path('apis/' + api.id);
+				$location.path('apis/view/' + api.id);
 			}, function(errorResponse) {
 				$scope.error = errorResponse.data;
 			});

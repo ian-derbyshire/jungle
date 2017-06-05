@@ -3,14 +3,17 @@
 		<h1 data-ng-bind="api.name"></h1>
 	</div>
 	<div class="pull-right">
-		<a class="btn btn-primary btn-sm" href="/#!/apis/{{api.id}}/edit">
-			<i class="glyphicon glyphicon-edit"></i> Edit API
+		<a class="btn btn-default btn-sm" href="/#!/apis">
+			Back
 		</a>
-		<a class="btn btn-success btn-sm" href="/#!/apis/{{api.id}}/plugins">
-			<i class="fa fa-puzzle-piece"></i> View active plugins
+		<a class="btn btn-primary btn-sm" href="/#!/apis/{{api.id}}/edit">
+			<i class="glyphicon glyphicon-edit"></i> Edit
+		</a>
+		<a class="btn btn-info btn-sm" href="/#!/apis/{{api.id}}/plugins">
+			<i class="fa fa-puzzle-piece"></i> Plugins
 		</a>
 		<a class="btn btn-danger btn-sm" data-ng-click="remove();">
-			<i class="glyphicon glyphicon-trash"></i> Remove API
+			<i class="glyphicon glyphicon-trash"></i> Delete
 		</a>
 	</div>
 	<p class="clearfix">
