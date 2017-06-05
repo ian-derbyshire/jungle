@@ -26,7 +26,7 @@ angular.module('apis').constant('PLUGINSAVAILABLE', [
 			{
 				'name':'config.keepalive',
 				'type' : 'integer',
-				'label': 'Keepalive'
+				'label': 'Keep Alive'
 			},
 			{
 				'name':'config.method',
@@ -97,7 +97,7 @@ angular.module('apis').constant('PLUGINSAVAILABLE', [
 			{
 				'name':'config.keepalive',
 				'type' : 'integer',
-				'label': 'Keepalive'
+				'label': 'Keep Alive'
 			}
 		]
 	},
@@ -118,12 +118,8 @@ angular.module('apis').constant('PLUGINSAVAILABLE', [
 			},
 			{
 				'name': 'reopen',
-				'type' : 'enum',
+				'type' : 'boolean',
 				'label': 'Reopen',
-				'values': [
-					{ 'label' : 'True', 'value' : 'true'},
-					{ 'label' : 'False', 'value' : 'false'}
-				]
 			}
 		]
 	},
@@ -298,30 +294,8 @@ angular.module('apis').constant('PLUGINSAVAILABLE', [
 			},
 			{
 				'name': 'config.preflight_continue',
-				'type' : 'enum',
-				'label': 'Preflight Continue'
-			}
-		]
-	},
-	{
-		name: 'dynamic-ssl',
-		label: 'Dynamic SSL',
-		docUrl: 'https://getkong.org/plugins/dynamic-ssl/',
-		schema: [
-			{
-				'name':'config.cert',
-				'type' : 'string',
-				'label': 'Certificate File Path'
-			},
-			{
-				'name':'config.key',
-				'type' : 'string',
-				'label': 'Certificate Key Path'
-			},
-			{
-				'name':'config.only_https',
 				'type' : 'boolean',
-				'label': 'Only HTTPS'
+				'label': 'Preflight Continue'
 			}
 		]
 	},
@@ -523,12 +497,8 @@ angular.module('apis').constant('PLUGINSAVAILABLE', [
 			},
 			{
 				'name':'config.fault_tolerant',
-				'type' : 'enum',
+				'type' : 'boolean',
 				'label': 'Fault Tolerant',
-				'values': [
-					{ 'label' : 'True', 'value' : 'true'},
-					{ 'label' : 'False', 'value' : 'false'}
-				]
 			},
 			{
 				'name':'config.redis_host',
@@ -571,6 +541,667 @@ angular.module('apis').constant('PLUGINSAVAILABLE', [
 				'name':'config.allowed_payload_size',
 				'type' : 'integer',
 				'label': 'Allowed Request Payload Size In Megabytes'
+			}
+		]
+	},
+	{
+		name: 'correlation-id',
+		label: 'Correlation ID',
+		docUrl: 'https://getkong.org/plugins/correlation-id/',
+		schema: [
+			{
+				'name':'config.header_name',
+				'type' : 'string',
+				'label': 'Header Name'
+			},
+			{
+				'name':'config.generator',
+				'type' : 'enum',
+				'label': 'Generator',
+				'values': [
+					{ 'label' : 'UUID', 'value' : 'uuid'},
+					{ 'label' : 'UUID + Counter', 'value' : 'uuid#counter'},
+					{ 'label' : 'Tracker', 'value' : 'tracker'}
+				]
+			},
+			{
+				'name':'config.echo_downstream',
+				'type' : 'boolean',
+				'label': 'Echo Header Downstream'
+			}
+		]
+	},
+	{
+		name: 'response-ratelimiting',
+		label: 'Response Rate Limiting',
+		docUrl: 'https://getkong.org/plugins/response-ratelimiting/',
+		schema: [
+				{
+				'name':'consumer_id',
+				'type' : 'string',
+				'label': 'Consumer ID'
+			},
+			{
+				'name':'config.limits.{limit_name}',
+				'type' : 'string',
+				'label': 'Limit Name'
+			},
+			{
+				'name':'config.limits.{limit_name}.second',
+				'type' : 'integer',
+				'label': 'Limit (second)'
+			},
+			{
+				'name':'config.limits.{limit_name}.minute',
+				'type' : 'integer',
+				'label': 'Limit (minute)'
+			},
+			{
+				'name':'config.limits.{limit_name}.hour',
+				'type' : 'integer',
+				'label': 'Limit (hour)'
+			},
+			{
+				'name':'config.limits.{limit_name}.day',
+				'type' : 'integer',
+				'label': 'Limit (day)'
+			},
+			{
+				'name':'config.limits.{limit_name}.month',
+				'type' : 'integer',
+				'label': 'Limit (month)'
+			},
+			{
+				'name':'config.limits.{limit_name}.year',
+				'type' : 'integer',
+				'label': 'Limit (year)'
+			},
+			{
+				'name':'config.header_name',
+				'type' : 'string',
+				'label': 'Header Name'
+			},
+			{
+				'name':'config.block_on_first_violation',
+				'type' : 'boolean',
+				'label': 'Block On First Violation'
+			},
+			{
+				'name':'config.limit_by',
+				'type' : 'enum',
+				'label': 'Limit By',
+				'values': [
+					{ 'label' : 'Consumer', 'value' : 'consumer'},
+					{ 'label' : 'Credential', 'value' : 'credential'},
+					{ 'label' : 'IP', 'value' : 'ip'}
+				]
+			},
+			{
+				'name':'config.policy',
+				'type' : 'enum',
+				'label': 'Policy',
+				'values': [
+					{ 'label' : 'Local', 'value' : 'local'},
+					{ 'label' : 'Cluster', 'value' : 'cluster'},
+					{ 'label' : 'Redis', 'value' : 'redis'}
+				]
+			},
+			{
+				'name':'config.fault_tolerant',
+				'type' : 'boolean',
+				'label': 'Fault Tolerant'
+			},
+			{
+				'name':'config.redis_host',
+				'type' : 'string',
+				'label': 'Redis Host'
+			},
+			{
+				'name':'config.redis_port',
+				'type' : 'integer',
+				'label': 'Redis Port'
+			},
+			{
+				'name':'config.redis_password',
+				'type' : 'string',
+				'label': 'Redis Password'
+			},
+			{
+				'name':'config.redis_timeout',
+				'type' : 'integer',
+				'label': 'Timeout'
+			},
+			{
+				'name':'config.redis_database',
+				'type' : 'integer',
+				'label': 'Redis Database'
+			},
+		]
+	},
+	{
+		name: 'request-termination',
+		label: 'Request Termination',
+		docUrl: 'https://getkong.org/plugins/request-termination/',
+		schema: [
+			{
+				'name':'config.status_code',
+				'type' : 'integer',
+				'label': 'Status Code'
+			},
+			{
+				'name':'config.message',
+				'type' : 'string',
+				'label': 'Message'
+			},
+			{
+				'name':'config.body',
+				'type' : 'string',
+				'label': 'Body'
+			},
+			{
+				'name':'config.content_type',
+				'type' : 'string',
+				'label': 'Content Type'
+			},
+		]
+	},
+	{
+		name: 'acl',
+		label: 'ACL',
+		docUrl: 'https://getkong.org/plugins/acl/',
+		schema: [
+			{
+				'name':'config.whitelist',
+				'type' : 'string',
+				'label': 'Whitelist'
+			},
+			{
+				'name':'config.blacklist',
+				'type' : 'string',
+				'label': 'Blacklist'
+			}
+		]
+	},
+	{
+		name: 'hmac-auth',
+		label: 'HMAC Authentication',
+		docUrl: 'https://getkong.org/plugins/hmac-authentication/',
+		schema: [
+			{
+				'name':'config.hide_credentials',
+				'type' : 'boolean',
+				'label': 'Hide Credentials'
+			},
+			{
+				'name':'config.clock_skew',
+				'type' : 'integer',
+				'label': 'Clock Skew (seconds)'
+			},
+			{
+				'name':'config.anonymous',
+				'type' : 'string',
+				'label': 'Anonymous'
+			}
+		]
+	},
+	{
+		name: 'ldap-auth',
+		label: 'LDAP Authentication',
+		docUrl: 'https://getkong.org/plugins/ldap-authentication/',
+		schema: [
+			{
+				'name':'config.hide_credentials',
+				'type' : 'boolean',
+				'label': 'Hide Credentials'
+			},
+			{
+				'name':'config.ldap_host',
+				'type' : 'string',
+				'label': 'Host'
+			},
+			{
+				'name':'config.ldap_port',
+				'type' : 'string',
+				'label': 'Port'
+			},
+			{
+				'name':'config.start_tls',
+				'type' : 'boolean',
+				'label': 'Start TLS (Transport Layer Security'
+			},
+			{
+				'name':'config.base_dn',
+				'type' : 'string',
+				'label': 'Base DN'
+			},
+			{
+				'name':'config.verify_ldap_host',
+				'type' : 'boolean',
+				'label': 'Verify Host'
+			},
+			{
+				'name':'config.attribute',
+				'type' : 'string',
+				'label': 'Attribute'
+			},
+			{
+				'name':'config.cache_ttl',
+				'type' : 'integer',
+				'label': 'Cache TTL (seconds)'
+			},
+			{
+				'name':'config.timeout',
+				'type' : 'integer',
+				'label': 'Timeout'
+			},
+			{
+				'name':'config.keepalive',
+				'type' : 'integer',
+				'label': 'Keep Alive'
+			},
+			{
+				'name':'config.anonymous',
+				'type' : 'string',
+				'label': 'Anonymous'
+			}
+		]
+	},
+	{
+		name: 'jwt',
+		label: 'JWT',
+		docUrl: 'https://getkong.org/plugins/jwt/',
+		schema: [
+			{
+				'name':'config.uri_param_names',
+				'type' : 'string',
+				'label': 'URI Param Names'
+			},
+			{
+				'name':'config.claims_to_verify',
+				'type' : 'enum',
+				'label': 'Claims To Verify',
+				'values': [
+					{ 'label' : 'EXP', 'value' : 'exp'},
+					{ 'label' : 'NBF', 'value' : 'nbf'}
+				]
+			},
+			{
+				'name':'config.key_claim_name',
+				'type' : 'string',
+				'label': 'Key Claim Name'
+			},
+			{
+				'name':'config.secret_is_base64',
+				'type' : 'boolean',
+				'label': 'Secret Is Base64'
+			},
+				{
+				'name':'config.anonymous',
+				'type' : 'string',
+				'label': 'Anonymous'
+			}
+		]
+	},
+	{
+		name: 'ip-restriction',
+		label: 'IP Restriction',
+		docUrl: 'https://getkong.org/plugins/ip-restriction/',
+		schema: [
+			{
+				'name':'consumer_id',
+				'type': 'string',
+				'label': 'Consumer ID',
+			},
+			{
+				'name':'config.whitelist',
+				'type' : 'string',
+				'label': 'Whitelist'
+			},
+			{
+				'name':'config.blacklist',
+				'type' : 'string',
+				'label': 'Blacklist'
+			}
+		]
+	},
+	{
+		name: 'bot-detection',
+		label: 'Bot Detection',
+		docUrl: 'https://getkong.org/plugins/bot-detection/',
+		schema: [
+			{
+				'name':'config.whitelist',
+				'type' : 'string',
+				'label': 'Whitelist'
+			},
+			{
+				'name':'config.blacklist',
+				'type' : 'string',
+				'label': 'Blacklist'
+			}
+		]
+	},
+	{
+		name: 'aws-lambda',
+		label: 'AWL Lambda',
+		docUrl: 'https://getkong.org/plugins/aws-lambda/',
+		schema: [
+			{
+				'name':'config.aws_key',
+				'type' : 'string',
+				'label': 'AWS Key'
+			},
+			{
+				'name':'config.aws_region',
+				'type' : 'enum',
+				'label': 'AWS Region',
+				'values': [
+					{ 'label' : 'US-EAST-1', 'value' : 'us-east-1'},
+					{ 'label' : 'US-EAST-2', 'value' : 'us-east-2'},
+					{ 'label' : 'AP-NORTHEAST-1', 'value' : 'ap-northeast-1'},
+					{ 'label' : 'AP-NORTHEAST-2', 'value' : 'ap-northeast-2'},
+					{ 'label' : 'AP-SOUTHEAST-1', 'value' : 'ap-southeast-1'},
+					{ 'label' : 'AP-SOUTHEAST-2', 'value' : 'ap-southeast-2'},
+					{ 'label' : 'EU-CENTRAL-1', 'value' : 'eu-central-1'},
+					{ 'label' : 'EU-WEST-1', 'value' : 'eu-west-1'},
+				]
+			},
+			{
+				'name':'config.function_name',
+				'type' : 'string',
+				'label': 'Function Name'
+			},
+			{
+				'name':'config.qualifier',
+				'type' : 'string',
+				'label': 'Qualifier'
+			},
+			{
+				'name':'config.invocation_type',
+				'type' : 'enum',
+				'label': 'Invocation Type',
+				'values': [
+					{ 'label' : 'RequestResponse', 'value' : 'requestresponse'},
+					{ 'label' : 'Event', 'value' : 'event'},
+					{ 'label' : 'DryRun', 'value' : 'dryrun'}
+				]
+			},
+			{
+				'name':'config.log_type',
+				'type' : 'enum',
+				'label': 'Log Type',
+				'values': [
+					{ 'label' : 'None', 'value' : 'none'},
+					{ 'label' : 'Tail', 'value' : 'tail'},
+				]
+			},
+			{
+				'name':'config.timeout',
+				'type' : 'integer',
+				'label': 'Timeout'
+			},
+			{
+				'name':'config.keepalive',
+				'type' : 'integer',
+				'label': 'Keep Alive'
+			},
+		]
+	},
+	{
+		name: 'openwhisk',
+		label: 'OpenWhisk',
+		docUrl: 'https://getkong.org/plugins/openwhisk/',
+		schema: [
+			{
+				'name':'config.host',
+				'type' : 'string',
+				'label': 'Host'
+			},
+			{
+				'name':'config.port',
+				'type' : 'integer',
+				'label': 'Port'
+			},
+			{
+				'name':'config.path',
+				'type' : 'string',
+				'label': 'The Output Path File'
+			},
+			{
+				'name':'config.action',
+				'type' : 'string',
+				'label': 'Action to be invoked'
+			},
+			{
+				'name':'config.service_token',
+				'type' : 'string',
+				'label': 'Service Token'
+			},
+			{
+				'name':'config.https_verify',
+				'type' : 'boolean',
+				'label': 'Verify HTTPS'
+			},
+			{
+				'name':'config.https',
+				'type' : 'boolean',
+				'label': 'Use HTTPS'
+			},
+			{
+				'name':'config.result',
+				'type' : 'boolean',
+				'label': 'Result Of The Action'
+			},
+			{
+				'name':'config.timeout',
+				'type' : 'integer',
+				'label': 'Timeout'
+			},
+			{
+				'name':'config.keepalive',
+				'type' : 'integer',
+				'label': 'Keep Alive'
+			},
+		]
+	},
+	{
+		name: 'syslog',
+		label: 'Syslog',
+		docUrl: 'https://getkong.org/plugins/syslog/',
+		schema: [
+			{
+				'name':'consumer_id',
+				'type': 'string',
+				'label': 'Consumer ID',
+			},
+			{
+				'name':'config.successful_severity',
+				'type': 'enum',
+				'label': 'Successful Severity',
+				'values': [
+					{ 'label' : 'Emergency', 'value' : 'emerg'},
+					{ 'label' : 'Alert', 'value' : 'alert'},
+					{ 'label' : 'Critical', 'value' : 'crit'},
+					{ 'label' : 'Error', 'value' : 'err'},
+					{ 'label' : 'Warning', 'value' : 'warning'},
+					{ 'label' : 'Notice', 'value' : 'notice'},
+					{ 'label' : 'Informational', 'value' : 'info'},
+					{ 'label' : 'Debug', 'value' : 'debug'}
+				]
+			},
+				{
+				'name':'config.client_errors_severity',
+				'type': 'enum',
+				'label': 'Client Errors Severity',
+				'values': [
+					{ 'label' : 'Emergency', 'value' : 'emerg'},
+					{ 'label' : 'Alert', 'value' : 'alert'},
+					{ 'label' : 'Critical', 'value' : 'crit'},
+					{ 'label' : 'Error', 'value' : 'err'},
+					{ 'label' : 'Warning', 'value' : 'warning'},
+					{ 'label' : 'Notice', 'value' : 'notice'},
+					{ 'label' : 'Informational', 'value' : 'info'},
+					{ 'label' : 'Debug', 'value' : 'debug'}
+				]
+			},
+			{
+				'name':'config.server_errors_severity',
+				'type': 'enum',
+				'label': 'Server Errors Severity',
+				'values': [
+					{ 'label' : 'Emergency', 'value' : 'emerg'},
+					{ 'label' : 'Alert', 'value' : 'alert'},
+					{ 'label' : 'Critical', 'value' : 'crit'},
+					{ 'label' : 'Error', 'value' : 'err'},
+					{ 'label' : 'Warning', 'value' : 'warning'},
+					{ 'label' : 'Notice', 'value' : 'notice'},
+					{ 'label' : 'Informational', 'value' : 'info'},
+					{ 'label' : 'Debug', 'value' : 'debug'}
+				]
+			},
+			{
+				'name':'config.log_level',
+				'type': 'enum',
+				'label': 'Log Level',
+				'values': [
+					{ 'label' : 'Emergency', 'value' : 'emerg'},
+					{ 'label' : 'Alert', 'value' : 'alert'},
+					{ 'label' : 'Critical', 'value' : 'crit'},
+					{ 'label' : 'Error', 'value' : 'err'},
+					{ 'label' : 'Warning', 'value' : 'warning'},
+					{ 'label' : 'Notice', 'value' : 'notice'},
+					{ 'label' : 'Informational', 'value' : 'info'},
+					{ 'label' : 'Debug', 'value' : 'debug'}
+				]
+			}
+		]
+	},
+	{
+		name: 'statsd',
+		label: 'StatsD',
+		docUrl: 'https://getkong.org/plugins/statsd/',
+		schema: [
+			{
+				'name':'consumer_id',
+				'type': 'string',
+				'label': 'Consumer ID',
+			},
+			{
+				'name':'config.host',
+				'type': 'string',
+				'label': 'Host',
+			},
+			{
+				'name':'config.port',
+				'type' : 'integer',
+				'label': 'Port'
+			},
+			{
+				'name':'config.metrics',
+				'type' : 'string',
+				'label': 'Metrics'
+			},
+			{
+				'name':'config.timeout',
+				'type' : 'integer',
+				'label': 'Timeout'
+			}
+		]
+	},
+	{
+		name: 'loggly',
+		label: 'Loggly',
+		docUrl: 'https://getkong.org/plugins/loggly/',
+		schema: [
+			{
+				'name':'consumer_id',
+				'type': 'string',
+				'label': 'Consumer ID',
+			},
+				{
+				'name':'config.host',
+				'type': 'string',
+				'label': 'Host',
+			},
+			{
+				'name':'config.port',
+				'type' : 'integer',
+				'label': 'Port'
+			},
+				{
+				'name':'config.key',
+				'type': 'string',
+				'label': 'Access Token',
+			},
+			{
+				'name':'config.tags',
+				'type' : 'string',
+				'label': 'Tags'
+			},
+			{
+				'name':'config.timeout',
+				'type' : 'integer',
+				'label': 'Timeout'
+			},
+			{
+				'name':'config.successful_severity',
+				'type': 'enum',
+				'label': 'Successful Severity',
+				'values': [
+					{ 'label' : 'Emergency', 'value' : 'emerg'},
+					{ 'label' : 'Alert', 'value' : 'alert'},
+					{ 'label' : 'Critical', 'value' : 'crit'},
+					{ 'label' : 'Error', 'value' : 'err'},
+					{ 'label' : 'Warning', 'value' : 'warning'},
+					{ 'label' : 'Notice', 'value' : 'notice'},
+					{ 'label' : 'Informational', 'value' : 'info'},
+					{ 'label' : 'Debug', 'value' : 'debug'}
+				]
+			},
+				{
+				'name':'config.client_errors_severity',
+				'type': 'enum',
+				'label': 'Client Errors Severity',
+				'values': [
+					{ 'label' : 'Emergency', 'value' : 'emerg'},
+					{ 'label' : 'Alert', 'value' : 'alert'},
+					{ 'label' : 'Critical', 'value' : 'crit'},
+					{ 'label' : 'Error', 'value' : 'err'},
+					{ 'label' : 'Warning', 'value' : 'warning'},
+					{ 'label' : 'Notice', 'value' : 'notice'},
+					{ 'label' : 'Informational', 'value' : 'info'},
+					{ 'label' : 'Debug', 'value' : 'debug'}
+				]
+			},
+			{
+				'name':'config.server_errors_severity',
+				'type': 'enum',
+				'label': 'Server Errors Severity',
+				'values': [
+					{ 'label' : 'Emergency', 'value' : 'emerg'},
+					{ 'label' : 'Alert', 'value' : 'alert'},
+					{ 'label' : 'Critical', 'value' : 'crit'},
+					{ 'label' : 'Error', 'value' : 'err'},
+					{ 'label' : 'Warning', 'value' : 'warning'},
+					{ 'label' : 'Notice', 'value' : 'notice'},
+					{ 'label' : 'Informational', 'value' : 'info'},
+					{ 'label' : 'Debug', 'value' : 'debug'}
+				]
+			},
+			{
+				'name':'config.log_level',
+				'type': 'enum',
+				'label': 'Log Level',
+				'values': [
+					{ 'label' : 'Emergency', 'value' : 'emerg'},
+					{ 'label' : 'Alert', 'value' : 'alert'},
+					{ 'label' : 'Critical', 'value' : 'crit'},
+					{ 'label' : 'Error', 'value' : 'err'},
+					{ 'label' : 'Warning', 'value' : 'warning'},
+					{ 'label' : 'Notice', 'value' : 'notice'},
+					{ 'label' : 'Informational', 'value' : 'info'},
+					{ 'label' : 'Debug', 'value' : 'debug'}
+				]
 			}
 		]
 	}
