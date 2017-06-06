@@ -209,8 +209,8 @@ angular.module('apis').constant('PLUGINSAVAILABLE', [
 			},
 			{
 				'name': 'config.key_in_body',
-				'type' : 'enum',
-				'label': 'Key In Body'
+				'type' : 'boolean',
+				'label': 'Key In Body',
 			}
 		],
 		api :
