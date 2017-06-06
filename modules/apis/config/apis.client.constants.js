@@ -1116,12 +1116,12 @@ angular.module('apis').constant('PLUGINSAVAILABLE', [
 			{
 				'name':'consumer_id',
 				'type': 'string',
-				'label': 'Consumer ID',
+				'label': 'Consumer ID'
 			},
 				{
 				'name':'config.host',
 				'type': 'string',
-				'label': 'Host',
+				'label': 'Host'
 			},
 			{
 				'name':'config.port',
@@ -1131,7 +1131,7 @@ angular.module('apis').constant('PLUGINSAVAILABLE', [
 				{
 				'name':'config.key',
 				'type': 'string',
-				'label': 'Access Token',
+				'label': 'Access Token'
 			},
 			{
 				'name':'config.tags',
@@ -1202,6 +1202,194 @@ angular.module('apis').constant('PLUGINSAVAILABLE', [
 					{ 'label' : 'Informational', 'value' : 'info'},
 					{ 'label' : 'Debug', 'value' : 'debug'}
 				]
+			}
+		]
+	},
+	{
+		name: 'galileo',
+		label: 'Galileo',
+		docUrl: 'https://getkong.org/plugins/galileo/',
+		schema: [
+			{
+				'name':'consumer_id',
+				'type': 'string',
+				'label': 'Consumer ID'
+			},
+			{
+				'name':'config.service_token',
+				'type' : 'string',
+				'label': 'Service Token'
+			},
+			{
+				'name':'config.environment',
+				'type' : 'string',
+				'label': 'Environment Name'
+			},
+			{
+				'name':'config.log_bodies',
+				'type' : 'boolean',
+				'label': 'Capture And Send Request/Response Bodies'
+			},
+			{
+				'name':'config.retry_count',
+				'type' : 'integer',
+				'label': 'Number Of Retries'
+			},
+			{
+				'name':'config.connection_timeout',
+				'type' : 'integer',
+				'label': 'Connection Timeout (seconds)'
+			},
+			{
+				'name':'config.flush_timeout',
+				'type' : 'integer',
+				'label': 'Flush Timeout (seconds)'
+			},
+			{
+				'name':'config.queue_size',
+				'type' : 'integer',
+				'label': 'Queue Size'
+			},
+			{
+				'name':'config.host',
+				'type' : 'string',
+				'label': 'Host'
+			},
+			{
+				'name':'config.port',
+				'type' : 'integer',
+				'label': 'Port'
+			},
+			{
+				'name':'config.https',
+				'type' : 'boolean',
+				'label': 'Use HTTPS'
+			}
+		]
+	},
+	{
+		name: 'datadog',
+		label: 'Datadog',
+		docUrl: 'https://getkong.org/plugins/datadog/',
+		schema: [
+			{
+				'name':'consumer_id',
+				'type': 'string',
+				'label': 'Consumer ID'
+			},
+			{
+				'name':'config.host',
+				'type' : 'string',
+				'label': 'Host'
+			},
+			{
+				'name':'config.port',
+				'type' : 'integer',
+				'label': 'Port'
+			},
+			{
+				'name':'config.metrics',
+				'type' : 'string',
+				'label': 'Metrics'
+			},
+			{
+				'name':'config.timeout',
+				'type' : 'integer',
+				'label': 'Timeout'
+			}
+		]
+	},
+	{
+		name: 'runscope',
+		label: 'Runscope',
+		docUrl: 'https://getkong.org/plugins/runscope/',
+		schema: [
+			{
+				'name':'config.access_token',
+				'type' : 'string',
+				'label': 'Access Token'
+			},
+			{
+				'name':'config.bucket_key',
+				'type' : 'string',
+				'label': 'Bucket ID'
+			},
+			{
+				'name':'config.log_body',
+				'type' : 'boolean',
+				'label': 'Capture And Send Request/Response Bodies'
+			},
+				{
+				'name':'config.api_endpoint',
+				'type' : 'string',
+				'label': 'API Endpoint'
+			},
+				{
+				'name':'config.timeout',
+				'type' : 'integer',
+				'label': 'Timeout'
+			},
+			{
+				'name':'config.keepalive',
+				'type' : 'integer',
+				'label': 'Keep Alive'
+			}
+		]
+	},
+	{
+		name: 'oauth2',
+		label: 'OAuth 2.0 Authentication',
+		docUrl: 'https://getkong.org/plugins/oauth2-authentication/',
+		schema: [
+			{
+				'name':'config.scopes',
+				'type' : 'string',
+				'label': 'Scope Names'
+			},
+			{
+				'name':'config.mandatory_scope',
+				'type' : 'boolean',
+				'label': 'Mandatory Scope'
+			},
+			{
+				'name':'config.token_expiration',
+				'type' : 'integer',
+				'label': 'Token Expiration (seconds)'
+			},
+			{
+				'name':'config.enable_authorization_code',
+				'type' : 'boolean',
+				'label': 'Enable Authorization Code'
+			},
+			{
+				'name':'config.enable_client_credentials',
+				'type' : 'boolean',
+				'label': 'Enable Client Credentials'
+			},
+			{
+				'name':'config.enable_implicit_grant',
+				'type' : 'boolean',
+				'label': 'Enable Implicit Grant'
+			},
+			{
+				'name':'config.enable_password_grant',
+				'type' : 'boolean',
+				'label': 'Enable Password Grant'
+			},
+			{
+				'name':'config.hide_credentials',
+				'type' : 'boolean',
+				'label': 'Hide Credentials'
+			},
+			{
+				'name':'config.accept_http_if_already_terminated',
+				'type' : 'boolean',
+				'label': 'Accept HTTP Requests Even Once Terminated'
+			},
+			{
+				'name':'config.anonymous',
+				'type' : 'string',
+				'label': 'Anonymous'
 			}
 		]
 	}
